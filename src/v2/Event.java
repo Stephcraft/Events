@@ -75,6 +75,7 @@ public abstract class Event <L, A,B,C,D,E,F,G,H,I> {
 	public void reflectionTrigger(Object... params) {
 		cancelled = false;
 		
+		active = true;
 		queue.forEach((properties) -> {
 			final L listener = properties.listener;
 			final boolean ignore = properties.ignoreCancelled && cancelled;
@@ -88,6 +89,7 @@ public abstract class Event <L, A,B,C,D,E,F,G,H,I> {
 				e.printStackTrace();
 			}
 		});
+		active = false;
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -112,6 +114,8 @@ public abstract class Event <L, A,B,C,D,E,F,G,H,I> {
 	}
 	
 	protected void trigger(Consumer<L> consumer) {
+		cancelled = false;
+		
 		active = true;
 		queue.forEach((properties) -> {
 			final L listener = properties.listener;
