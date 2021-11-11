@@ -57,7 +57,8 @@ public class Generator {
 		String alpha = "ABCDEFGHI";
 		String functionals = "";
 		String classes = "";
-		String template = loadFile("event.java");
+		String event = loadFile("event.java");
+		String listener = loadFile("listener.java");
 		
 		for(int i=0; i<=alpha.length(); i++) {
 			String dollars = ",_".repeat(alpha.length() - i);
@@ -76,16 +77,25 @@ public class Generator {
 				}
 			}
 			
-			classes += template
+			classes += event
+				.replaceAll("PII", "P" + (i+1))
 				.replaceAll("PI", "P" + i)
 				.replaceAll("GENERICDOLLARS", generics + dollars)
 				.replaceAll("GENERICS", generics)
 				.replaceAll("PARAMS", params)
 				.replaceAll("INPUTS", inputs)
 				.replaceAll("_", "\\$")
+				.replaceAll("<>", i == 0 ? "" : "<>")
+				+ "\n";
+			
+			functionals += listener
+				.replaceAll("PI", "P" + i)
+				.replaceAll("GENERICS", generics)
+				.replaceAll("PARAMS", params)
+				.replaceAll("INDEX", Integer.toString(i))
 				+ "\n";
 		}
 		
-		System.out.println(functionals + "\n" + classes);
+		System.out.println(functionals + "---\n\n" + classes);
 	}
 }
