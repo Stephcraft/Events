@@ -1,5 +1,5 @@
 # Events
-My take on an event system in Java. Originally developed for [Zombiecraft](https://zc.stephcraft.net).
+My take on an event system in Java. Originally developed for [Project 16x16](https://github.com/Stephcraft/Project-16x16) followed by v2 for [Zombiecraft](https://zc.stephcraft.net).
 
 ### V1
 ##### Features
