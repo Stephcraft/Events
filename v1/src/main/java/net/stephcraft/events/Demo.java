@@ -1,4 +1,4 @@
-package v1;
+package net.stephcraft.events;
 
 public class Demo {
 

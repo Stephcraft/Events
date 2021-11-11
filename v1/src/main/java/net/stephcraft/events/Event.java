@@ -1,4 +1,4 @@
-package v1;
+package net.stephcraft.events;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

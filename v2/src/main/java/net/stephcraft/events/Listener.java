@@ -1,4 +1,4 @@
-package v2;
+package net.stephcraft.events;
 
 public interface Listener {
 	interface P0 { void execute(); }

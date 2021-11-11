@@ -1,4 +1,7 @@
-package v2;
+package net.stephcraft.events;
+
+import net.stephcraft.events.settings.EventFlag;
+import net.stephcraft.events.variable.Variable;
 
 public class Demo {
 	
@@ -17,7 +20,7 @@ public class Demo {
 		
 		public Player() {
 			onJump = Event.P0.create();
-			onCollect = Event.P1.create(true);
+			onCollect = Event.P1.create(EventFlag.CANCELLABLE);
 		}
 		
 		public void jump() {
