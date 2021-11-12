@@ -13,7 +13,7 @@
 		<module>v2</module>
 	</modules>
 
-	<build>
+	<build> 
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
