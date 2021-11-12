@@ -8,6 +8,23 @@ My take on an event system in Java. Originally developed for [Project 16x16](htt
 * `bind(reference, methodName)` / `unbind(reference, methodName)`
 * `bound(reference, methodName)`
 
+##### Maven
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+```
+
+```xml
+<dependency>
+    <groupId>com.github.Stephcraft.Events</groupId>
+    <artifactId>v1</artifactId>
+    <version>main-SNAPSHOT</version>
+    <scope>provided</scope>
+</dependency>
+```
+
 ##### Post  
 > https://discourse.processing.org/t/event-binding-for-processing/17291
 
@@ -24,6 +41,26 @@ My take on an event system in Java. Originally developed for [Project 16x16](htt
 * `Event.flush(object)` failsafe measure in uncontrolled cases to prevent memory leaks
 * `Variable<T>` implementation to modify the impact of events
 * Events can pass from `0` to `9` parameters by default, generate more at your needs
+* Chronicled events (pre and post event)
+* Event priority
+* Nested event calls
+
+##### Maven
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+```
+
+```xml
+<dependency>
+    <groupId>com.github.Stephcraft.Events</groupId>
+    <artifactId>v2</artifactId>
+    <version>main-SNAPSHOT</version>
+    <scope>provided</scope>
+</dependency>
+```
 
 ##### Post
 > https://discourse.processing.org/t/an-event-system-for-processing-4/32564
