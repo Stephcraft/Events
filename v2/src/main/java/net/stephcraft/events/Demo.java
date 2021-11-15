@@ -11,7 +11,7 @@ public class Demo {
 	
 	// this object host events
 	// note that it could also listen to events
-	public static class Player {
+	protected static class Player {
 		
 		public final Event.P0 onJump;
 		public final Event.P1<Variable<Integer>> onCollect;
@@ -43,7 +43,7 @@ public class Demo {
 	}
 	
 	// this object listens to the player's events
-	public static class World {
+	protected static class World {
 		
 		public final Listener.P0 onPlayerJump = this::onPlayerJump;
 		public final Listener.P1<Variable<Integer>> onPlayerCollect = this::onPlayerCollect;

@@ -8,7 +8,7 @@ public class Demo {
 	
 	// this object host events
 	// note that it could also listen to events
-	public static class Player {
+	protected static class Player {
 		
 		public final Event onJump;
 		public final Event onCollect;
@@ -38,7 +38,7 @@ public class Demo {
 	}
 	
 	// this object listens to the player's events
-	public static class World {
+	protected static class World {
 		
 		Player player;
 		
