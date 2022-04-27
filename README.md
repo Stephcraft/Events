@@ -97,8 +97,8 @@ class Player {
 class Droid {
     
     // Droid listens to player's event
-    public final Listener.P1<Boolean, Variable<Integer>, Variable<Item>> onPlayerCollect = this::onPlayerCollect;
-    public final Listener.P1<Boolean, Constant<Integer>, Constant<Item>> onPlayerCollected = this::onPlayerCollected;
+    public final Listener.P3<Boolean, Variable<Integer>, Variable<Item>> onPlayerCollect = this::onPlayerCollect;
+    public final Listener.P3<Boolean, Constant<Integer>, Constant<Item>> onPlayerCollected = this::onPlayerCollected;
     
     // when multiple listeners are present for the same event you may also specify priority and ignore cancelled
     public Droid() {
