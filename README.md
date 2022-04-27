@@ -66,3 +66,55 @@ My take on an event system in Java. It was originally developed for [Project 16x
     <scope>provided</scope>
 </dependency>
 ```
+
+## Some code
+```java
+class Player {
+    
+    // Player emits this event
+    public final Event.P3<Boolean, Variable<Integer>, Variable<Item>> onCollect;
+    
+    // this event may be cancellable and be boundable to before and after it occurs
+    public Player() {
+        onCollect = Event.P3.create(CANCELLABLE, CHRONICLED)
+    }
+    
+    // when item is collected
+    public void handleItemCollection() {
+        onCollect.trigger(
+        
+            // event parameters
+            naturalPickup, Variable.of(xp), Variable.of(item),
+            
+            // event action
+            (naturalPickup, xp, item) -> {
+                // handle item collection (if not cancelled)
+            }
+        )
+    }
+}
+
+class Droid {
+    
+    // Droid listens to player's event
+    public final Listener.P1<Boolean, Variable<Integer>, Variable<Item>> onPlayerCollect = this::onPlayerCollect;
+    public final Listener.P1<Boolean, Constant<Integer>, Constant<Item>> onPlayerCollected = this::onPlayerCollected;
+    
+    // when multiple listeners are present for the same event you may also specify priority and ignore cancelled
+    public Droid() {
+        player.onCollect.bind(PRE, onPlayerCollect);
+        player.onCollect.bind(POST, onPlayerCollected);
+    }
+    
+    // before event occurs
+    public void onPlayerCollect(Boolean naturalPickup, Variable<Integer> xp, Variable<Item> item) {
+        item.set(Items.DIRT.get());
+        System.out.println("Player is collecting dirt");
+    }
+    
+    // after event occured (parameters are immutable)
+    public void onPlayerCollected(Boolean naturalPickup, Constant<Integer> xp, Constant<Item> item) {
+        System.out.println("Player collected " + item.getName());
+    }
+}
+```
